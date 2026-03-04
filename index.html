@@ -2,30 +2,48 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quantopaghi.it</title>
+
 <style>
 body{
-font-family: Arial;
+font-family:Arial;
+background:#f4f4f4;
 text-align:center;
-background:#f5f5f5;
 padding:40px
 }
+
 .box{
 background:white;
 padding:40px;
 border-radius:10px;
 max-width:600px;
 margin:auto;
-box-shadow:0 5px 20px rgba(0,0,0,0.1)
+box-shadow:0 10px 20px rgba(0,0,0,0.1)
 }
+
+input{
+padding:10px;
+margin:10px;
+width:200px;
+border-radius:6px;
+border:1px solid #ccc
+}
+
 button{
 background:#2ecc71;
 border:none;
-padding:15px 30px;
-font-size:18px;
-border-radius:8px;
+padding:12px 25px;
+font-size:16px;
+border-radius:6px;
 color:white;
 cursor:pointer
+}
+
+.result{
+margin-top:20px;
+font-size:20px;
+font-weight:bold
 }
 </style>
 </head>
@@ -36,17 +54,37 @@ cursor:pointer
 
 <h1>Quanto stai pagando davvero l'energia?</h1>
 
-<p>Carica la tua bolletta e scopri:</p>
+<p>Inserisci i dati della tua bolletta</p>
 
-<p>✔ il prezzo reale €/kWh<br>
-✔ se stai pagando troppo<br>
-✔ quanto potresti risparmiare</p>
+<input id="costo" placeholder="Costo bolletta €">
 
 <br>
 
-<button>Carica Bolletta</button>
+<input id="kwh" placeholder="Consumo kWh">
+
+<br><br>
+
+<button onclick="calcola()">Calcola €/kWh</button>
+
+<div class="result" id="risultato"></div>
 
 </div>
+
+<script>
+
+function calcola(){
+
+var costo = document.getElementById("costo").value
+var kwh = document.getElementById("kwh").value
+
+var prezzo = costo / kwh
+
+document.getElementById("risultato").innerHTML =
+"Stai pagando circa " + prezzo.toFixed(2) + " €/kWh"
+
+}
+
+</script>
 
 </body>
 </html>
